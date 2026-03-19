@@ -29,10 +29,10 @@ const GENRE_FILTERS = [
 function GalleryCamera() {
   const { camera } = useThree()
   useLayoutEffect(() => {
-    camera.position.set(0, 1.4, 7.0)
-    camera.lookAt(new THREE.Vector3(0, 0.2, 0))
+    camera.position.set(0, 1.6, 9.0)
+    camera.lookAt(new THREE.Vector3(0, 0.0, 0))
     if ((camera as THREE.PerspectiveCamera).fov !== undefined) {
-      ;(camera as THREE.PerspectiveCamera).fov = 50
+      ;(camera as THREE.PerspectiveCamera).fov = 46
       ;(camera as THREE.PerspectiveCamera).updateProjectionMatrix()
     }
   }, [camera])
@@ -275,11 +275,15 @@ export function GalleryPage() {
         <div style={{ position: 'absolute', top: 132, left: 0, right: 0, bottom: 0, pointerEvents: 'auto' }}>
           <Canvas
             dpr={[1, 1.5]}
-            camera={{ position: [0, 1.4, 7.0], fov: 50 }}
+            camera={{ position: [0, 1.6, 9.0], fov: 46 }}
             gl={{ antialias: true, alpha: true }}
             style={{ width: '100%', height: '100%' }}
           >
             <GalleryCamera />
+            {/* Lights — required for meshStandardMaterial on card bodies */}
+            <ambientLight intensity={0.55} color="#c8d8ff" />
+            <directionalLight position={[4, 8, 6]} intensity={0.7} color="#ffffff" />
+            <directionalLight position={[-4, 2, 4]} intensity={0.25} color="#a0c0ff" />
             <SceneBackground cameraControl={false} />
             <AmbientParticles />
             <StaffLines />

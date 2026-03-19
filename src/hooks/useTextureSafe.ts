@@ -11,15 +11,24 @@ export function useTextureSafe(url: string): THREE.Texture | null {
   useEffect(() => {
     if (!url) return
     let cancelled = false
+    // Reset when URL changes
+    setTexture(null)
     const loader = new THREE.TextureLoader()
     loader.crossOrigin = 'anonymous'
-    loader.load(url, (tex) => {
-      if (cancelled) return
-      tex.minFilter = THREE.LinearFilter
-      tex.generateMipmaps = false
-      tex.colorSpace = THREE.SRGBColorSpace
-      setTexture(tex)
-    }, undefined, () => {})
+    loader.load(
+      url,
+      (tex) => {
+        if (cancelled) return
+        tex.minFilter = THREE.LinearFilter
+        tex.magFilter = THREE.LinearFilter
+        tex.generateMipmaps = false
+        tex.colorSpace = THREE.SRGBColorSpace
+        tex.needsUpdate = true
+        setTexture(tex)
+      },
+      undefined,
+      () => { /* CORS or 404 — stay null (show fallback color) */ }
+    )
     return () => { cancelled = true }
   }, [url])
 
