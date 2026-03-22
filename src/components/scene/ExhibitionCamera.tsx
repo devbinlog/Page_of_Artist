@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { cameraDragState } from '@/utils/cameraState'
+import { useStore } from '@/store/useStore'
 
 interface ExhibitionCameraProps {
   initialRadius?: number
@@ -11,6 +12,7 @@ interface ExhibitionCameraProps {
   maxRadius?: number
   hoverStrength?: number  // 마우스 hover 시 카메라 흔들림 강도
   orbitSensitivity?: number
+  zoomThreshold?: number  // 이 radius 이하면 "줌됨" 상태
 }
 
 // 전시관 카메라
@@ -25,8 +27,10 @@ export function ExhibitionCamera({
   maxRadius = 15,
   hoverStrength = 0.45,
   orbitSensitivity = 0.007,
+  zoomThreshold,
 }: ExhibitionCameraProps) {
   const { camera } = useThree()
+  const setIsCardZoomed = useStore((s) => s.setIsCardZoomed)
 
   // 현재 카메라 구형좌표 (lerp 적용됨)
   const thetaRef = useRef(initialTheta)
@@ -117,6 +121,7 @@ export function ExhibitionCamera({
     }
   }, [minRadius, maxRadius, orbitSensitivity, hoverStrength])
 
+  const isZoomedRef = useRef(false)
   useFrame(() => {
     // hover + drag orbit 합산해서 lerp
     const targetTheta = orbitThetaRef.current + hoverThetaRef.current
@@ -125,6 +130,15 @@ export function ExhibitionCamera({
     thetaRef.current = THREE.MathUtils.lerp(thetaRef.current, targetTheta, 0.05)
     phiRef.current = THREE.MathUtils.lerp(phiRef.current, targetPhi, 0.05)
     radiusRef.current = THREE.MathUtils.lerp(radiusRef.current, targetRadiusRef.current, 0.07)
+
+    // 줌 임계값 감지 → store 업데이트 (매 프레임 set 방지)
+    if (zoomThreshold !== undefined) {
+      const zoomed = radiusRef.current < zoomThreshold
+      if (zoomed !== isZoomedRef.current) {
+        isZoomedRef.current = zoomed
+        setIsCardZoomed(zoomed)
+      }
+    }
 
     // 구형 → 직교 좌표 변환
     const cosPhi = Math.cos(phiRef.current)

@@ -15,7 +15,16 @@ import { CardBack } from '@/components/card/CardBack'
 const GENRE_CHIPS = ['All', 'Rock', 'Indie', 'Pop', 'Electronic', 'Hip-hop', 'R&B', 'Latin']
 
 // ─── Demo Card 3D scene (hero right panel) ───────────────
-function DemoCardScene({ artist }: { artist: Artist | null }) {
+// 항상 템플릿 카드를 표시 — 실제 아티스트 데이터 불필요
+const TEMPLATE_TRACKS = [
+  { number: 1, name: 'Opening Track' },
+  { number: 2, name: 'Featured Single' },
+  { number: 3, name: 'Fan Favourite' },
+  { number: 4, name: 'Deep Cut' },
+  { number: 5, name: 'Closing Track' },
+]
+
+function DemoCardScene() {
   const outerRef     = useRef<THREE.Group>(null)
   const flipRef      = useRef<THREE.Group>(null)
   const [hovered, setHovered] = useState(false)
@@ -62,25 +71,24 @@ function DemoCardScene({ artist }: { artist: Artist | null }) {
           onPointerLeave={() => { setHovered(false); document.body.style.cursor = '' }}
           onClick={(e) => { e.stopPropagation(); targetRotY.current -= Math.PI }}
         >
-          {artist && showFront && (
+          {showFront && (
             <CardFront
-              artistName={artist.name}
-              genres={artist.genres}
-              imageUrl={artist.imageUrl}
-              featuredTrackName={artist.featuredTrack.name}
-              featuredTrackYoutubeUrl={artist.featuredTrack.youtubeUrl}
-              albumImageUrl={artist.featuredAlbum.imageUrl}
+              artistName="Artist Name"
+              genres={['MUSIC', 'DISCOVERY']}
+              imageUrl=""
+              featuredTrackName="Featured Track"
+              featuredTrackYoutubeUrl=""
+              albumImageUrl=""
               tiltRef={tiltRef}
             />
           )}
-          {artist && !showFront && (
+          {!showFront && (
             <group rotation={[0, Math.PI, 0]}>
               <CardBack
-                albumName={artist.featuredAlbum.name}
-                albumYoutubeUrl={artist.albumYoutubeUrl}
-                albumImageUrl={artist.featuredAlbum.imageUrl}
-                imageUrl={artist.imageUrl}
-                tracks={artist.featuredAlbum.tracks}
+                albumName="Featured Album"
+                albumYoutubeUrl=""
+                albumImageUrl=""
+                tracks={TEMPLATE_TRACKS}
               />
             </group>
           )}
@@ -441,7 +449,7 @@ export function IntroPage() {
             camera={{ position: [0, 0.3, 7.0], fov: 44 }}
             gl={{ antialias: true, alpha: true }}
           >
-            <DemoCardScene artist={artists[0] ?? null} />
+            <DemoCardScene />
           </Canvas>
 
           {/* Hint label */}

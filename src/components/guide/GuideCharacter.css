@@ -1,0 +1,242 @@
+/* ═══════════════════════════════════════════════════════
+   GuideCharacter — Music Curator (Headphone DJ)
+   Fixed bottom-right by default, bottom-left on ArtistPage.
+   크기를 최소화하여 다른 UI를 가리지 않도록.
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Root wrapper ──────────────────────────────────────── */
+.guide-wrapper {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 500;           /* 콘텐츠보다는 위, 모달/nav보다는 아래 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  pointer-events: none;
+}
+
+/* GalleryPage: 오선지 위로 올리기 */
+.guide-wrapper.guide-gallery {
+  bottom: min(160px, 12vh);
+}
+
+/* 모든 interactive 자식에 pointer events 허용 */
+.guide-wrapper > * {
+  pointer-events: auto;
+}
+
+/* ── Minimised state ───────────────────────────────────── */
+.guide-minimised .guide-character-btn svg {
+  width: 40px;
+  height: auto;
+  opacity: 0.65;
+}
+.guide-minimised .guide-notification-dot {
+  display: none;
+}
+
+/* ── Character button ──────────────────────────────────── */
+.guide-character-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  /* 작은 크기로 고정 — 80px SVG를 그대로 사용 */
+  width: 72px;
+  height: auto;
+  /* Idle float */
+  animation: guide-float 3s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 6px 12px rgba(15, 30, 64, 0.2));
+}
+
+.guide-character-btn svg {
+  display: block;
+  width: 72px;
+  height: auto;
+}
+
+.guide-character-btn:hover {
+  transform: scale(1.08) translateY(-3px);
+  filter: drop-shadow(0 10px 20px rgba(79, 125, 243, 0.4));
+}
+
+.guide-character-btn:active {
+  transform: scale(0.95);
+}
+
+/* Talking pulse */
+.guide-talking {
+  animation: guide-float 3s ease-in-out infinite,
+             guide-pulse 0.55s ease-in-out infinite alternate;
+}
+
+/* Excited bounce */
+.guide-excited-anim {
+  animation: guide-excited 0.45s ease-in-out 3,
+             guide-float 3s ease-in-out infinite 1.35s;
+}
+
+/* ── Notification dot (말풍선 닫혔을 때 새 메시지 표시) ── */
+.guide-notification-dot {
+  position: absolute;
+  top: 2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background: #FF6B6B;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: guide-dot-pop 2s ease-in-out infinite;
+}
+
+/* ── Minimise button ───────────────────────────────────── */
+.guide-minimise-btn {
+  align-self: flex-end;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(79, 125, 243, 0.2);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B80C8;
+  transition: background 0.18s, transform 0.15s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.guide-minimise-btn:hover {
+  background: #4f6ef7;
+  color: white;
+  transform: scale(1.12);
+}
+
+/* ── Speech Bubble ─────────────────────────────────────── */
+.guide-bubble {
+  position: relative;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(79, 125, 243, 0.2);
+  border-radius: 14px;
+  padding: 12px 34px 12px 14px;
+  width: 250px;
+  box-shadow:
+    0 4px 20px rgba(15, 30, 64, 0.12),
+    0 1px 4px rgba(79, 125, 243, 0.15);
+  animation: guide-bubble-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Pointer tail */
+.guide-bubble-tail {
+  position: absolute;
+  bottom: -10px;
+  right: 24px;
+  width: 18px;
+  height: 11px;
+  overflow: hidden;
+}
+
+.guide-bubble-tail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  background: rgba(255, 255, 255, 0.98);
+  border-right: 1px solid rgba(79, 125, 243, 0.2);
+  border-bottom: 1px solid rgba(79, 125, 243, 0.2);
+  transform: rotate(45deg);
+  transform-origin: top left;
+}
+
+.guide-bubble-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1e1e2e;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  word-break: keep-all;
+}
+
+/* Close button */
+.guide-bubble-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  color: #aab0c8;
+  padding: 2px 5px;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+}
+
+.guide-bubble-close:hover {
+  color: #4f6ef7;
+  background: rgba(79, 125, 243, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Keyframes
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes guide-float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes guide-pulse {
+  from { transform: translateY(0)   scale(1.00); }
+  to   { transform: translateY(-2px) scale(1.02); }
+}
+
+@keyframes guide-excited {
+  0%   { transform: translateY(0)    rotate(0deg);  }
+  25%  { transform: translateY(-9px) rotate(-5deg); }
+  50%  { transform: translateY(-3px) rotate(5deg);  }
+  75%  { transform: translateY(-7px) rotate(-2deg); }
+  100% { transform: translateY(0)    rotate(0deg);  }
+}
+
+@keyframes guide-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.93);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0)   scale(1.00);
+  }
+}
+
+@keyframes guide-dot-pop {
+  0%, 100% { transform: scale(1.0); opacity: 1;   }
+  50%       { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .guide-wrapper {
+    right: 10px;
+    bottom: 10px;
+  }
+  .guide-character-btn,
+  .guide-character-btn svg {
+    width: 58px;
+  }
+  .guide-bubble {
+    width: 210px;
+    font-size: 12px;
+  }
+}

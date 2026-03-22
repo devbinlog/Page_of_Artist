@@ -73,16 +73,17 @@ export function CardFront({
       </CardParallaxLayer>
 
       {/* ─── 앨범 아트 ───
-          CardParallaxLayer 바깥: z=0.05로 카드 앞에 확실히 배치
-          renderOrder=10: 투명 카드 배경보다 나중에 렌더링 보장 */}
+          • z=0.05: 카드 전면(z≈0.02)보다 확실히 앞
+          • key 로 texture 유무 전환 시 material 완전 재생성
+            → R3F prop 잔류(color/opacity/transparent) 버그 방지
+          • renderOrder=10: 투명 오버레이보다 항상 나중에 렌더 */}
       <group position={[0, Y_ART, 0.05]}>
         <mesh renderOrder={10}>
           <planeGeometry args={[ART, ART]} />
-          {albumTex ? (
-            <meshBasicMaterial map={albumTex} />
-          ) : (
-            <meshBasicMaterial color="#7aa8d8" transparent opacity={0.50} />
-          )}
+          {albumTex
+            ? <meshBasicMaterial key="img-loaded" map={albumTex} color="#ffffff" />
+            : <meshBasicMaterial key="img-pending" color="#1a3060" transparent opacity={0.60} />
+          }
         </mesh>
         {/* 앨범 아트 테두리 glow */}
         <mesh position={[0, 0, -0.003]} renderOrder={9}>

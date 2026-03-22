@@ -31,6 +31,10 @@ interface AppState {
   selectedCarouselIndex: number | null
   setSelectedCarouselIndex: (i: number | null) => void
 
+  // ── 카드 줌 상태 (ArtistPage) ─────────────────────────
+  isCardZoomed: boolean
+  setIsCardZoomed: (v: boolean) => void
+
   // ── 인증 ─────────────────────────────────────────────
   currentUser: FirebaseUser | null
   setCurrentUser: (user: FirebaseUser | null) => void
@@ -56,6 +60,9 @@ export const useStore = create<AppState>((set, get) => ({
 
   selectedCarouselIndex: null,
   setSelectedCarouselIndex: (i) => set({ selectedCarouselIndex: i }),
+
+  isCardZoomed: false,
+  setIsCardZoomed: (v) => set({ isCardZoomed: v }),
 
   currentUser: null,
   setCurrentUser: (user) => set({ currentUser: user }),

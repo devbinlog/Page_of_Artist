@@ -195,7 +195,7 @@ export function ArtistPage() {
           {/* Featured track */}
           {selectedArtist.featuredTrack?.name && (
             <div style={{
-              padding: '18px 20px',
+              padding: '14px 16px',
               background: colors.bgLight,
               borderRadius: 14,
               border: `1px solid ${colors.borderLight}`,
@@ -232,16 +232,15 @@ export function ArtistPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      width: 38, height: 38, borderRadius: 10,
+                      width: 36, height: 36, borderRadius: 8,
                       background: '#FF0000',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#fff', fontSize: 14, textDecoration: 'none',
+                      textDecoration: 'none',
                       boxShadow: '0 2px 10px rgba(255,0,0,0.25)',
-                      lineHeight: 1,
-                      paddingLeft: 2,
+                      flexShrink: 0,
                     }}
                   >
-                    ▶
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="white" style={{ display: 'block' }}><path d="M8 5v14l11-7z"/></svg>
                   </a>
                 )}
               </div>
@@ -265,17 +264,23 @@ export function ArtistPage() {
                 borderRadius: 14,
                 border: `1px solid ${colors.borderLight}`,
               }}>
-                {selectedArtist.featuredAlbum.imageUrl && (
-                  <img
-                    src={selectedArtist.featuredAlbum.imageUrl}
+                <img
+                    src={selectedArtist.featuredAlbum.imageUrl || selectedArtist.imageUrl}
                     alt={selectedArtist.featuredAlbum.name}
                     style={{
                       width: 54, height: 54, borderRadius: 8,
                       objectFit: 'cover', flexShrink: 0,
+                      background: colors.bgLight,
                     }}
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement
+                      if (img.src !== selectedArtist.imageUrl && selectedArtist.imageUrl) {
+                        img.src = selectedArtist.imageUrl
+                      } else {
+                        img.style.display = 'none'
+                      }
+                    }}
                   />
-                )}
                 <div>
                   <div style={{
                     fontSize: 14, fontWeight: 700, color: colors.textPrimary,
@@ -297,12 +302,15 @@ export function ArtistPage() {
                     rel="noopener noreferrer"
                     style={{
                       marginLeft: 'auto',
-                      fontSize: 12, color: colors.brand,
-                      fontFamily: 'sans-serif', fontWeight: 600,
+                      width: 36, height: 36, borderRadius: 8,
+                      background: '#FF0000',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
                       textDecoration: 'none',
+                      boxShadow: '0 2px 10px rgba(255,0,0,0.25)',
+                      flexShrink: 0,
                     }}
                   >
-                    Listen →
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="white" style={{ display: 'block' }}><path d="M8 5v14l11-7z"/></svg>
                   </a>
                 )}
               </div>
@@ -331,7 +339,7 @@ export function ArtistPage() {
             {selectedArtist.featuredTrack?.youtubeUrl && (
               <SocialBtn
                 href={selectedArtist.featuredTrack.youtubeUrl}
-                icon="▶" label="YouTube"
+                icon="▶️" label="YouTube"
                 color="#FF0000"
               />
             )}
@@ -366,18 +374,19 @@ export function ArtistPage() {
       }}>
         <Canvas
           dpr={[1, 1.5]}
-          camera={{ position: [0, 0, 5], fov: 55 }}
+          camera={{ position: [0, 0, 7], fov: 50 }}
           gl={{ antialias: true, alpha: true }}
         >
           <SceneBackground cameraControl={false} />
           <ExhibitionCamera
-            initialRadius={5}
+            initialRadius={7}
             initialTheta={0}
             initialPhi={0.05}
-            minRadius={3}
-            maxRadius={9}
-            hoverStrength={0.15}
+            minRadius={4.5}
+            maxRadius={12}
+            hoverStrength={0.12}
             orbitSensitivity={0.006}
+            zoomThreshold={5.5}
           />
           <MusicElements />
 

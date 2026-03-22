@@ -12,14 +12,14 @@ export const STATIC_ARTISTS: Artist[] = [
   {
     id: 'greenday',
     name: 'Green Day',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/GreenDay_Isle_of_Wight_Montage.jpg/400px-GreenDay_Isle_of_Wight_Montage.jpg',
+    imageUrl: '/artists/greenday_r.jpg',
     description: 'Punk rock legends from California who defined pop-punk with explosive energy and politically charged anthems.',
     genres: ['punk rock', 'alternative rock', 'pop punk'],
     spotifyUrl: 'https://open.spotify.com/artist/7Ey4PD4MYsKc5I2dolUwbH',
     featuredAlbum: {
       id: 'greenday-ai',
       name: 'American Idiot',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/0e/17/f0/0e17f011-aadf-d4d1-1c7e-b61ce39f968b/093624947301.jpg/600x600bb.jpg',
+      imageUrl: '/albums/greenday-ai.jpg',
       tracks: [
         { number: 1, name: 'American Idiot' },
         { number: 2, name: 'Jesus of Suburbia' },
@@ -47,14 +47,14 @@ export const STATIC_ARTISTS: Artist[] = [
   {
     id: 'lany',
     name: 'LANY',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/LANY_%40_The_Shrine_06_28_2019_%2848498652597%29.jpg/1280px-LANY_%40_The_Shrine_06_28_2019_%2848498652597%29.jpg',
+    imageUrl: '/artists/lany_r.jpg',
     description: 'LA-based indie pop trio crafting dreamy synth-driven soundscapes and heartfelt, cinematic love songs.',
     genres: ['indie pop', 'synth-pop', 'dream pop'],
     spotifyUrl: 'https://open.spotify.com/artist/5IaHrOWFB1NfWsXFCDAsLc',
     featuredAlbum: {
       id: 'lany-mb',
       name: "mama's boy",
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/0a/da/17/0ada17e2-255a-1ed8-0eb5-c3d717540d5b/20UMGIM33837.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/lany-mb.jpg',
       tracks: [
         { number: 1, name: 'Thick and Thin' },
         { number: 2, name: 'I Still Talk to Jesus' },
@@ -88,7 +88,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'yungblud-weird',
       name: 'Weird!',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/aa/4f/04/aa4f0468-2302-7a6b-9096-603e1f8211bd/20UMGIM74700.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/yungblud-weird.jpg',
       tracks: [
         { number: 1, name: 'Teresa' },
         { number: 2, name: 'Cotton Candy' },
@@ -122,7 +122,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'ts-midnights',
       name: 'Midnights',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/fb/b7/5d/fbb75d98-3b52-2fa5-ca82-658194f3c498/23UMGIM58157.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/ts-midnights.jpg',
       tracks: [
         { number: 1, name: 'Lavender Haze' },
         { number: 2, name: 'Marjorie' },
@@ -156,7 +156,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'weeknd-afterhours',
       name: 'After Hours',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/2b/b9/fe/2bb9fef5-d7f3-8345-25a9-db0e79fde4e4/20UMGIM11048.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/weeknd-afterhours.jpg',
       tracks: [
         { number: 1, name: 'Alone Again' },
         { number: 2, name: 'Too Late' },
@@ -190,7 +190,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'billie-wwa',
       name: 'WHEN WE ALL FALL ASLEEP',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1a/37/d1/1a37d1b1-8508-54f2-f541-bf4e437dda76/19UMGIM05028.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/billie-wwa.jpg',
       tracks: [
         { number: 1, name: '!!!!!!' },
         { number: 2, name: 'bad guy' },
@@ -224,7 +224,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'ari-tyg',
       name: 'thank u, next',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bb/69/07/bb6907de-8ad4-970b-3311-121320e1bf9c/19UMGIM03691.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/ari-tyg.jpg',
       tracks: [
         { number: 1, name: 'imagine' },
         { number: 2, name: 'needy' },
@@ -258,7 +258,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'ed-divide',
       name: '÷ (Divide)',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/2d/1c/4f/2d1c4fd7-018c-0529-693b-c67fea53b698/190295851286.jpg/600x600bb.jpg',
+      imageUrl: '/albums/ed-divide.jpg',
       tracks: [
         { number: 1, name: 'Eraser' },
         { number: 2, name: 'Castle on the Hill' },
@@ -292,7 +292,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'harry-hh',
       name: "Harry's House",
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2a/19/fb/2a19fb85-2f70-9e44-f2a9-82abe679b88e/886449990061.jpg/600x600bb.jpg',
+      imageUrl: '/albums/harry-hh.jpg',
       tracks: [
         { number: 1, name: 'Music for a Sushi Restaurant' },
         { number: 2, name: 'Late Night Talking' },
@@ -326,7 +326,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'olivia-sour',
       name: 'SOUR',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/02/ed/8c/02ed8cab-c089-2fdd-7ce6-ab334a9a4e19/21UMGIM26093.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/olivia-sour.jpg',
       tracks: [
         { number: 1, name: 'brutal' },
         { number: 2, name: 'traitor' },
@@ -358,7 +358,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'post-hb',
       name: "Hollywood's Bleeding",
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/6c/13/27/6c13279a-399b-2631-3cb2-6233a91d7a53/19UMGIM78325.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/post-hb.jpg',
       tracks: [
         { number: 1, name: "Hollywood's Bleeding" },
         { number: 2, name: 'Saint-Tropez' },
@@ -392,7 +392,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'id-nightvisions',
       name: 'Night Visions',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/c1/1a/fa/c11afaa1-26fc-9829-a6cf-9d1dd228ec06/12UMGIM46901.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/id-nightvisions.jpg',
       tracks: [
         { number: 1, name: 'Radioactive' },
         { number: 2, name: 'Tiptoe' },
@@ -425,7 +425,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'lp-ht',
       name: 'Hybrid Theory',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg',
+      imageUrl: '/albums/lp-ht.jpg',
       tracks: [
         { number: 1, name: 'Papercut' },
         { number: 2, name: 'One Step Closer' },
@@ -458,7 +458,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'foo-tcs',
       name: 'The Colour and the Shape',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/68/f5/86/68f586ca-a375-9965-a864-9e227e77ef5b/884977570328.jpg/600x600bb.jpg',
+      imageUrl: '/albums/foo-tcs.jpg',
       tracks: [
         { number: 1, name: 'Doll' },
         { number: 2, name: 'Monkey Wrench' },
@@ -491,7 +491,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'rhcp-californication',
       name: 'Californication',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/4c/86/1d/4c861dab-5428-f3b7-8068-82bb69db5e89/093624932130.jpg/600x600bb.jpg',
+      imageUrl: '/albums/rhcp-californication.jpg',
       tracks: [
         { number: 1, name: 'Around the World' },
         { number: 2, name: 'Parallel Universe' },
@@ -523,7 +523,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'patd-fever',
       name: "A Fever You Can't Sweat Out",
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/47/4b/88/474b88c7-e37e-0bb5-e2f8-45f7e80ec4ce/645131207760.jpg/600x600bb.jpg',
+      imageUrl: '/albums/patd-fever.jpg',
       tracks: [
         { number: 1, name: 'Introduction' },
         { number: 2, name: 'The Only Difference...' },
@@ -557,7 +557,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'bruno-24k',
       name: '24K Magic',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e3/47/a0/e347a0cc-87ce-5d05-d560-176c7d48f66e/075679904119.jpg/600x600bb.jpg',
+      imageUrl: '/albums/bruno-24k.jpg',
       tracks: [
         { number: 1, name: '24K Magic' },
         { number: 2, name: 'Chunky' },
@@ -588,7 +588,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'adele-21',
       name: '21',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f8/df/0a/f8df0ac9-ae76-9dae-86d3-4e913fc54fb1/634904152062.png/600x600bb.jpg',
+      imageUrl: '/albums/adele-21.jpg',
       tracks: [
         { number: 1, name: 'Rolling in the Deep' },
         { number: 2, name: 'Rumour Has It' },
@@ -620,7 +620,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'sam-lonely',
       name: 'In the Lonely Hour',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/80/74/b6/8074b6bc-387f-6cc9-5ede-92b76396ad5f/13UAEIM58958.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/sam-lonely.jpg',
       tracks: [
         { number: 1, name: 'Money on My Mind' },
         { number: 2, name: 'Good Thing' },
@@ -652,7 +652,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'eminem-mmlp',
       name: 'The Marshall Mathers LP',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/ea/ac/03/eaac03e5-8e9d-847e-d5b9-af7dee6a970b/00606949063221.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/eminem-mmlp.jpg',
       tracks: [
         { number: 1, name: 'Kill You' },
         { number: 2, name: 'Stan' },
@@ -684,7 +684,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'drake-scorpion',
       name: 'Scorpion',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bb/6d/8f/bb6d8f67-6d04-10b5-dd62-eb5809ac54fc/00602567879152.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/drake-scorpion.jpg',
       tracks: [
         { number: 1, name: 'Survival' },
         { number: 2, name: 'Nonstop' },
@@ -716,7 +716,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'kendrick-tpab',
       name: 'To Pimp a Butterfly',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/b5/a6/91/b5a69171-5232-3d5b-9c15-8963802f83dd/15UMGIM15814.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/kendrick-tpab.jpg',
       tracks: [
         { number: 1, name: "Wesley's Theory" },
         { number: 2, name: 'For Free? (Interlude)' },
@@ -750,7 +750,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'bb-uvst',
       name: 'Un Verano Sin Ti',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3e/04/eb/3e04ebf6-370f-f59d-ec84-2c2643db92f1/196626945068.jpg/600x600bb.jpg',
+      imageUrl: '/albums/bb-uvst.jpg',
       tracks: [
         { number: 1, name: 'El Apagón' },
         { number: 2, name: 'Después de la Playa' },
@@ -782,7 +782,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'rih-anti',
       name: 'ANTI',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/13/27/57/132757ba-42e6-9584-7390-ca694292a20e/16UMGIM03372.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/rih-anti.jpg',
       tracks: [
         { number: 1, name: 'Consideration' },
         { number: 2, name: 'James Joint' },
@@ -815,7 +815,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'sabrina-sns',
       name: "Short n' Sweet",
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/sabrina-sns.jpg',
       tracks: [
         { number: 1, name: 'Taste' },
         { number: 2, name: 'Espresso' },
@@ -849,7 +849,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'shawn-wonder',
       name: 'Wonder',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d5/f0/d2/d5f0d270-fc16-5691-d83e-917c067a6561/20UMGIM83351.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/shawn-wonder.jpg',
       tracks: [
         { number: 1, name: 'Dream' },
         { number: 2, name: 'Monster' },
@@ -881,7 +881,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'jcole-fhd',
       name: '2014 Forest Hills Drive',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ee/28/67/ee286794-6c33-a8c2-5c37-c04f1cb5e8a6/21UM1IM54415.rgb.jpg/600x600bb.jpg',
+      imageUrl: '/albums/jcole-fhd.jpg',
       tracks: [
         { number: 1, name: 'Intro' },
         { number: 2, name: 'January 28th' },
@@ -914,7 +914,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'pink-missundaztood',
       name: 'Missundaztood',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/df/91/d1/df91d174-0e25-2ce0-3c0e-aadb009ffc00/888880754912.jpg/600x600bb.jpg',
+      imageUrl: '/albums/pink-missundaztood.jpg',
       tracks: [
         { number: 1, name: "Don't Let Me Get Me" },
         { number: 2, name: 'Haze' },
@@ -946,7 +946,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'meghan-title',
       name: 'Title',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/1b/12/6a/1b126a39-d244-8799-787e-ea3e350ea24d/dj.auhlmenx.jpg/600x600bb.jpg',
+      imageUrl: '/albums/meghan-title.jpg',
       tracks: [
         { number: 1, name: 'All About That Bass' },
         { number: 2, name: 'Lips Are Movin' },
@@ -978,7 +978,7 @@ export const STATIC_ARTISTS: Artist[] = [
     featuredAlbum: {
       id: 'dylan-h61',
       name: 'Highway 61 Revisited',
-      imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/f8/ff/c0/f8ffc056-55b4-2033-657d-32492d1eea25/827969239926.jpg/600x600bb.jpg',
+      imageUrl: '/albums/dylan-h61.jpg',
       tracks: [
         { number: 1, name: 'Like a Rolling Stone' },
         { number: 2, name: 'Tombstone Blues' },
@@ -996,3 +996,4 @@ export const STATIC_ARTISTS: Artist[] = [
     instagramUrl: 'https://www.instagram.com/bobdylan',
   },
 ]
+

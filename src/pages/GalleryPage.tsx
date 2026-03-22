@@ -25,12 +25,12 @@ const GENRE_FILTERS = [
 ]
 
 // ─── Camera setup ─────────────────────────────────────────
-// 낮은 eye-level 시점, 카드 정면 구도
+// 카드 정면 구도 — eye-level에서 조금 더 가깝게
 function GalleryCamera() {
   const { camera } = useThree()
   useLayoutEffect(() => {
-    camera.position.set(0, 1.6, 9.0)
-    camera.lookAt(new THREE.Vector3(0, 0.0, 0))
+    camera.position.set(0, -0.3, 9.0)
+    camera.lookAt(new THREE.Vector3(0, 0.1, 0))
     if ((camera as THREE.PerspectiveCamera).fov !== undefined) {
       ;(camera as THREE.PerspectiveCamera).fov = 46
       ;(camera as THREE.PerspectiveCamera).updateProjectionMatrix()
@@ -102,7 +102,7 @@ function InfoPanel({
   return (
     <div style={{
       position: 'absolute',
-      bottom: 28,
+      bottom: 'min(180px, 10vh)',
       left: '50%',
       transform: 'translateX(-50%)',
       width: 440,
@@ -275,7 +275,7 @@ export function GalleryPage() {
         <div style={{ position: 'absolute', top: 132, left: 0, right: 0, bottom: 0, pointerEvents: 'auto' }}>
           <Canvas
             dpr={[1, 1.5]}
-            camera={{ position: [0, 1.6, 9.0], fov: 46 }}
+            camera={{ position: [0, -0.3, 9.0], fov: 46 }}
             gl={{ antialias: true, alpha: true }}
             style={{ width: '100%', height: '100%' }}
           >
@@ -286,7 +286,7 @@ export function GalleryPage() {
             <directionalLight position={[-4, 2, 4]} intensity={0.25} color="#a0c0ff" />
             <SceneBackground cameraControl={false} />
             <AmbientParticles />
-            <StaffLines />
+            <StaffLines yPosition={-3.3} />
             <FloorRing />
             <CircularCarousel
               key={genreFilter}
@@ -296,7 +296,7 @@ export function GalleryPage() {
             />
           </Canvas>
 
-          {/* Info panel overlay */}
+          {/* Info panel overlay — 오선지 위에 위치 */}
           <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, pointerEvents: 'none' }}>
             <InfoPanel
               artist={activeArtist}
@@ -307,9 +307,9 @@ export function GalleryPage() {
           </div>
         </div>
 
-        {/* Keyboard hint */}
+        {/* Keyboard hint — 오선지 위 */}
         <div style={{
-          position: 'absolute', bottom: 136, left: '50%',
+          position: 'absolute', bottom: 'min(260px, 20vh)', left: '50%',
           transform: 'translateX(-50%)',
           fontSize: 11, color: '#8A9BBF', fontFamily: 'sans-serif',
           pointerEvents: 'none', whiteSpace: 'nowrap',

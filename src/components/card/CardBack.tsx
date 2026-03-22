@@ -131,18 +131,14 @@ export function CardBack({ albumName, albumYoutubeUrl, albumImageUrl, imageUrl, 
             metalness={0.08} roughness={0.1}
           />
         </RoundedBox>
-        {/* 이미지 */}
-        {albumTex ? (
-          <mesh position={[0, 0, 0.040]}>
-            <planeGeometry args={[ART - 0.07, ART - 0.07]} />
-            <meshBasicMaterial map={albumTex} transparent />
-          </mesh>
-        ) : (
-          <mesh position={[0, 0, 0.040]}>
-            <planeGeometry args={[ART - 0.07, ART - 0.07]} />
-            <meshBasicMaterial color="#c8d8f0" transparent opacity={0.5} />
-          </mesh>
-        )}
+        {/* 이미지 — key로 material 완전 재생성 (stale prop 방지) */}
+        <mesh position={[0, 0, 0.040]}>
+          <planeGeometry args={[ART - 0.07, ART - 0.07]} />
+          {albumTex
+            ? <meshBasicMaterial key="back-img-loaded" map={albumTex} color="#ffffff" />
+            : <meshBasicMaterial key="back-img-pending" color="#c8d8f0" transparent opacity={0.5} />
+          }
+        </mesh>
       </group>
 
       {/* 아트 아래 구분선 */}

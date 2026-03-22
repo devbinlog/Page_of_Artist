@@ -20,6 +20,12 @@ resolve: {
           })
         },
       },
+      // Apple Music CDN proxy — strips CORS restriction so Three.js can load album art
+      '/imgproxy': {
+        target: 'https://is1-ssl.mzstatic.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/imgproxy/, ''),
+      },
     },
     watch: {
       // 사용하지 않는 대용량 파일 — 파일 감시에서 제외
